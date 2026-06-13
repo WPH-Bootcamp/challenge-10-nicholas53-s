@@ -1,19 +1,24 @@
+// Data user dari server.
 export interface User {
   id: number;
   name: string;
   email: string;
   phone?: string;
+  avatar?: string | null;
 }
 
+// Response sukses dari login/register.
+
 export interface AuthResponse {
-  success?: boolean;
-  message?: string;
+  success: boolean;
+  message: string;
   data: {
-    token: string;
     user: User;
+    token: string;
   };
 }
 
+// Payload yang dikirim ke endpoint register.
 export interface RegisterPayload {
   name: string;
   email: string;
@@ -21,6 +26,7 @@ export interface RegisterPayload {
   password: string;
 }
 
+// Payload login.
 export interface LoginPayload {
   email: string;
   password: string;
