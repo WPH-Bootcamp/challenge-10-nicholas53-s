@@ -1,47 +1,62 @@
-// src/components/home/recommended.tsx
 'use client';
 
 import { useState } from 'react';
-import { useRestaurants } from '@/lib/query/resto';
+import { useSearchParams } from 'next/navigation';
+import { useRestaurants, useSearchRestaurants } from '@/lib/query/resto';
 import { RestaurantCard } from './restaurant-card';
 
 export function Recommended() {
-  // Ambil data restoran dari API (endpoint publik, jalan utk login & visitor).
-  const { data, isLoading, isError } = useRestaurants();
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('search') ?? '';
+  const isSearching = searchQuery.trim().length > 0;
 
-  // Berapa banyak kartu yang ditampilkan. "Show More" menambah jumlahnya.
+  const searchResult = useSearchRestaurants(searchQuery);
+  const listResult = useRestaurants();
+
+  const { data, isLoading, isError } = isSearching ? searchResult : listResult;
+
   const [visibleCount, setVisibleCount] = useState(12);
-
   const restaurants = data ?? [];
   const visible = restaurants.slice(0, visibleCount);
   const hasMore = visibleCount < restaurants.length;
 
   return (
     <section className='mx-auto max-w-6xl px-6 py-10'>
-      {/* Header: judul + See All */}
+      {/* Header: judul berubah sesuai mode */}
       <div className='mb-6 flex items-center justify-between'>
         <h2 className='text-2xl font-extrabold text-neutral-900'>
-          Recommended
+          {isSearching ? `Search results for "${searchQuery}"` : 'Recommended'}
         </h2>
-        <button className='text-sm font-bold text-primary'>See All</button>
+        {!isSearching && (
+          <button className='text-sm font-bold text-primary'>See All</button>
+        )}
       </div>
 
-      {/* Loading state */}
+      {/* Loading */}
       {isLoading && (
         <p className='py-10 text-center text-neutral-500'>
           Loading restaurants...
         </p>
       )}
 
-      {/* Error state */}
+      {/* Error */}
       {isError && (
         <p className='py-10 text-center text-primary'>
           Failed to load restaurants. Please try again.
         </p>
       )}
 
-      {/* Data: grid kartu — 1 kolom mobile, 3 kolom desktop */}
-      {!isLoading && !isError && (
+      {/* Empty state — tidak ada hasil */}
+      {!isLoading && !isError && restaurants.length === 0 && (
+        <p className='py-10 text-center text-neutral-500'>
+          {isSearching
+            ? `No restaurants found for "${searchQuery}".`
+            : 'No restaurants available.'}
+        </p>
+      )}
+
+      {/* Data */}
+      {!isLoading && !isError && restaurants.length > 0 && (
         <>
           <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
             {visible.map((resto) => (
@@ -49,7 +64,6 @@ export function Recommended() {
             ))}
           </div>
 
-          {/* Tombol Show More — hanya muncul kalau masih ada sisa */}
           {hasMore && (
             <div className='mt-8 flex justify-center'>
               <button

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Star } from 'lucide-react';
 import type { Restaurant } from '@/Types/resto';
 
-// Kartu satu restoran. Menerima data dari API lewat prop `restaurant`.
 interface RestaurantCardProps {
   restaurant: Restaurant;
 }
@@ -15,7 +14,6 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       href={`/resto/${restaurant.id}`}
       className='flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md'
     >
-      {/* Logo restoran (dari API) */}
       <div className='size-20 shrink-0 overflow-hidden rounded-xl bg-neutral-100'>
         {restaurant.logo && (
           <Image

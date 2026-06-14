@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { ShoppingBag } from 'lucide-react';
 import { useAuthStore } from '@/Store/auth';
 import { useCart } from '@/lib/query/cart';
@@ -18,32 +19,28 @@ export function Navbar() {
   const { data: cart } = useCart();
   const cartCount = cart?.summary?.totalItems ?? 0;
 
-  // Deteksi scroll: scrolled=false saat di atas, true setelah scroll turun.
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const handleScroll = () => {
-      // Kalau sudah scroll lebih dari 10px, anggap "scrolled".
-      setScrolled(window.scrollY > 10);
-    };
-    handleScroll(); // cek posisi awal saat mount
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
-    // Bersihkan listener saat komponen dilepas (hindari memory leak).
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Warna teks & logo: putih saat di atas (transparan), gelap saat scrolled.
-  const isDarkText = scrolled;
+  const isTransparent = isHome && !scrolled;
+  const isDarkText = !isTransparent;
 
   return (
     <header
       className={cn(
         'fixed top-0 z-50 w-full transition-colors duration-300',
-        scrolled ? 'bg-white shadow-sm' : 'bg-transparent'
+        isTransparent ? 'bg-transparent' : 'bg-white shadow-sm'
       )}
     >
       <div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-4'>
-        {/* Logo */}
         <Link href='/' className='flex items-center gap-2'>
           <Image src='/foody-group.png' alt='Foody' width={32} height={32} />
           <span
@@ -56,7 +53,6 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Kanan: berubah tergantung login */}
         {isLoggedIn ? (
           <div className='flex items-center gap-4'>
             <Link href='/cart' className='relative'>
