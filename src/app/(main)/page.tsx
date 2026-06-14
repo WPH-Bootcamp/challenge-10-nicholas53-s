@@ -1,9 +1,14 @@
-'use client';
+// src/app/(main)/page.tsx
+import { Hero } from '@/components/home/hero';
+import { Categories } from '@/components/home/catagories';
+import { Recommended } from '@/components/home/recommended';
 
 export default function HomePage() {
   return (
-    <div className='p-6'>
-      <h1 className='text-2xl font-bold'>Home — Daftar Restoran</h1>
+    <div>
+      <Hero />
+      <Categories />
+      <Recommended />
     </div>
   );
 }
