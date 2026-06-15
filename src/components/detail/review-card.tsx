@@ -1,7 +1,7 @@
 // src/components/detail/review-card.tsx
 import Image from 'next/image';
 import { Star } from 'lucide-react';
-import type { Review } from '@/Types/resto';
+import type { Review } from '@/types/resto';
 
 export function ReviewCard({ review }: { review: Review }) {
   // Format tanggal: 25 August 2025, 13:38

@@ -1,5 +1,5 @@
 import { api } from './axios';
-import type { Cart, AddToCartPayload } from '@/Types/cart';
+import type { Cart, AddToCartPayload } from '@/types/cart';
 
 // GET /api/cart — ambil isi cart (dikelompokkan per restoran).
 export async function getCart(): Promise<Cart> {

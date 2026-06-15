@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff } from 'lucide-react';
-import { loginSchema, type LoginFormValues } from '@/lib/Validations/auth';
+import { loginSchema, type LoginFormValues } from '@/lib/validations/auth';
 import { useLogin } from '@/lib/query/auth';
 import { Button } from '@/components/ui/button';
 import { FormField } from './form-field';

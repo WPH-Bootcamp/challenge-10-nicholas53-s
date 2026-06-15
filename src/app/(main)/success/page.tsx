@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Check } from 'lucide-react';
-import { useLastOrderStore } from '@/Store/last-order';
+import { useLastOrderStore } from '@/store/last-order';
 import { AuthGuard } from '@/components/shared/auth-guard';
 
 function SuccessContent() {

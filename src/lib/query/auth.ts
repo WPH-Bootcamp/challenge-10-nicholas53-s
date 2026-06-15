@@ -3,8 +3,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { loginRequest, registerRequest } from '@/lib/api/auth';
-import { useAuthStore } from '@/Store/auth';
-import type { LoginPayload, RegisterPayload } from '@/Types/auth';
+import { useAuthStore } from '@/store/auth';
+import type { LoginPayload, RegisterPayload } from '@/types/auth';
 import { AxiosError } from 'axios';
 
 function getErrorMessage(error: unknown, fallback: string): string {

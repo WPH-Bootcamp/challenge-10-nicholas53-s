@@ -8,7 +8,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import {
   registerSchema,
   type RegisterFormValues,
-} from '@/lib/Validations/auth';
+} from '@/lib/validations/auth';
 import { useRegister } from '@/lib/query/auth';
 import { Button } from '@/components/ui/button';
 import { FormField } from './form-field';

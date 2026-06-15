@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Minus, Plus } from 'lucide-react';
-import type { CartItem } from '@/Types/cart';
+import type { CartItem } from '@/types/cart';
 import { useUpdateCartItem, useDeleteCartItem } from '@/lib/query/cart';
 
 export function CartItemRow({ item }: { item: CartItem }) {

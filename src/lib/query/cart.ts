@@ -8,7 +8,7 @@ import {
   clearCart,
 } from '@/lib/api/cart';
 import { queryKeys } from './keys';
-import type { AddToCartPayload } from '@/Types/cart';
+import type { AddToCartPayload } from '@/types/cart';
 
 // ===== READ: isi cart =====
 export function useCart() {

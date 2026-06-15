@@ -51,7 +51,7 @@ function CategoryContent() {
     if (priceMin) sp.set('priceMin', priceMin);
     if (priceMax) sp.set('priceMax', priceMax);
     router.push(`/category?${sp.toString()}`);
-    setShowFilter(false);
+    setShowFilter(false); // tutup panel setelah apply (mobile)
   };
 
   const resetFilter = () => {
@@ -63,6 +63,7 @@ function CategoryContent() {
     setShowFilter(false);
   };
 
+  // Isi panel filter (dipakai di sidebar desktop & overlay mobile).
   const filterBody = (
     <div className='space-y-6'>
       <p className='font-bold'>FILTER</p>
@@ -192,7 +193,7 @@ function CategoryContent() {
             onClick={() => setShowFilter(false)}
           />
           {/* Panel filter */}
-          <div className='absolute left-0 top-0 h-full w-80 max-w-[85%] overflow-y-auto bg-white p-5 shadow-xl'>
+          <div className='absolute right-0 top-0 h-full w-80 max-w-[85%] overflow-y-auto bg-white p-5 shadow-xl'>
             <div className='mb-4 flex justify-end'>
               <button onClick={() => setShowFilter(false)} aria-label='Tutup'>
                 <X size={20} />

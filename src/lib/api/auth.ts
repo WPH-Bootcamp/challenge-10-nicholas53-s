@@ -5,7 +5,7 @@ import type {
   LoginPayload,
   RegisterPayload,
   User,
-} from '@/Types/auth';
+} from '@/types/auth';
 
 export async function registerRequest(
   payload: RegisterPayload
