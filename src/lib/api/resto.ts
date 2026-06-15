@@ -3,7 +3,7 @@ import type {
   Restaurant,
   RestaurantDetail,
   RestoFilterParams,
-} from '@/Types/resto';
+} from '@/types/resto';
 
 export async function getRestaurants(
   params?: RestoFilterParams

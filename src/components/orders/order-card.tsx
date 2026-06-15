@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Order } from '@/Types/order';
+import type { Order } from '@/types/order';
 
 export function OrderCard({ order }: { order: Order }) {
   return (

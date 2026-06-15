@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useAuthStore } from '@/Store/auth';
+import { useAuthStore } from '@/store/auth';
 import { useCart } from '@/lib/query/cart';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';

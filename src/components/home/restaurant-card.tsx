@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star } from 'lucide-react';
-import type { Restaurant } from '@/Types/resto';
+import type { Restaurant } from '@/types/resto';
 
 interface RestaurantCardProps {
   restaurant: Restaurant;

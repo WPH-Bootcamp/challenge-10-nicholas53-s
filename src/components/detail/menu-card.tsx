@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { Minus, Plus } from 'lucide-react';
-import type { Menu } from '@/Types/resto';
-import type { CartItem } from '@/Types/cart';
+import type { Menu } from '@/types/resto';
+import type { CartItem } from '@/types/cart';
 import {
   useAddToCart,
   useUpdateCartItem,

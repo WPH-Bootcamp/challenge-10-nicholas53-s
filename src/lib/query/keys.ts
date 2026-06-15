@@ -1,5 +1,5 @@
-import type { RestoFilterParams } from '@/Types/resto';
-import type { OrderFilterParams } from '@/Types/order';
+import type { RestoFilterParams } from '@/types/resto';
+import type { OrderFilterParams } from '@/types/order';
 
 export const queryKeys = {
   // ===== RESTO =====

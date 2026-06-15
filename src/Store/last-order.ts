@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Order } from '@/Types/order';
+import type { Order } from '@/types/order';
 
 interface LastOrderState {
   lastOrder: Order | null;

@@ -1,4 +1,3 @@
-// src/app/(main)/checkout/page.tsx
 'use client';
 
 import { Suspense, useState } from 'react';
@@ -12,7 +11,7 @@ import { useCheckout } from '@/lib/query/order';
 import {
   checkoutSchema,
   type CheckoutFormValues,
-} from '@/lib/Validations/checkout';
+} from '@/lib/validations/checkout';
 import { AuthGuard } from '@/components/shared/auth-guard';
 import { Button } from '@/components/ui/button';
 

@@ -4,7 +4,7 @@ import type {
   Order,
   OrderFilterParams,
   CreateReviewPayload,
-} from '@/Types/order';
+} from '@/types/order';
 
 // POST /api/order/checkout — buat pesanan dari isi cart.
 // Response: { data: { transaction: Order } } → kembalikan order-nya.

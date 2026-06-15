@@ -7,7 +7,7 @@ import {
   getRecommendedRestaurants,
 } from '@/lib/api/resto';
 import { queryKeys } from './keys';
-import type { RestoFilterParams } from '@/Types/resto';
+import type { RestoFilterParams } from '@/types/resto';
 
 // Daftar restoran (dengan filter opsional).
 export function useRestaurants(params?: RestoFilterParams) {
