@@ -7,9 +7,10 @@ import type {
 } from '@/Types/order';
 
 // POST /api/order/checkout — buat pesanan dari isi cart.
-export async function checkout(payload: CheckoutPayload) {
+// Response: { data: { transaction: Order } } → kembalikan order-nya.
+export async function checkout(payload: CheckoutPayload): Promise<Order> {
   const { data } = await api.post('/order/checkout', payload);
-  return data;
+  return data.data?.transaction ?? data.data;
 }
 
 // GET /api/order/my-order — history pesanan user.
