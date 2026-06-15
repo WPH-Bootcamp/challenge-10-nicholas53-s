@@ -1,4 +1,3 @@
-// src/components/orders/order-card.tsx
 import Image from 'next/image';
 import type { Order } from '@/Types/order';
 
@@ -8,19 +7,19 @@ export function OrderCard({ order }: { order: Order }) {
       {/* Tiap restoran dalam order */}
       {order.restaurants.map((resto, idx) => (
         <div key={idx} className='space-y-3'>
-          {/* Header restoran */}
+          {/* Header restoran — info restoran bersarang di resto.restaurant */}
           <div className='flex items-center gap-2 font-bold text-neutral-900'>
             <div className='size-7 overflow-hidden rounded-full bg-neutral-100'>
-              {resto.logo && (
+              {resto.restaurant.logo && (
                 <Image
-                  src={resto.logo}
-                  alt={resto.name}
+                  src={resto.restaurant.logo}
+                  alt={resto.restaurant.name}
                   width={28}
                   height={28}
                 />
               )}
             </div>
-            {resto.name}
+            {resto.restaurant.name}
           </div>
 
           {/* Item dalam restoran ini */}
