@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag } from 'lucide-react';
 import { useAuthStore } from '@/Store/auth';
 import { useCart } from '@/lib/query/cart';
 import { Button } from '@/components/ui/button';
@@ -43,9 +42,10 @@ export function Navbar() {
       <div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-4'>
         <Link href='/' className='flex items-center gap-2'>
           <Image src='/foody-group.png' alt='Foody' width={32} height={32} />
+          {/* Teks "Foody" hilang di mobile, muncul di md ke atas */}
           <span
             className={cn(
-              'text-xl font-extrabold transition-colors',
+              'hidden text-xl font-extrabold transition-colors md:inline',
               isDarkText ? 'text-neutral-900' : 'text-white'
             )}
           >
@@ -56,11 +56,12 @@ export function Navbar() {
         {isLoggedIn ? (
           <div className='flex items-center gap-4'>
             <Link href='/cart' className='relative'>
-              <ShoppingBag
-                className={cn(
-                  'transition-colors',
-                  isDarkText ? 'text-neutral-800' : 'text-white'
-                )}
+              {/* Cart 2 warna: hitam saat navbar putih, putih saat transparan */}
+              <Image
+                src={isDarkText ? '/cart-icon-black.png' : '/cart-icon.png'}
+                alt='Cart'
+                width={24}
+                height={24}
               />
               {cartCount > 0 && (
                 <span className='absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-white'>

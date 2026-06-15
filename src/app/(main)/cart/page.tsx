@@ -2,13 +2,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { useCart } from '@/lib/query/cart';
+import { ChevronRight, Trash2 } from 'lucide-react';
+import { useCart, useClearCart } from '@/lib/query/cart';
 import { CartItemRow } from '@/components/cart/cart-item-row';
 import { AuthGuard } from '@/components/shared/auth-guard';
 
 function CartContent() {
   const { data: cart, isLoading, isError } = useCart();
+  const clearCart = useClearCart();
 
   if (isLoading) {
     return (
@@ -23,7 +24,6 @@ function CartContent() {
 
   const groups = cart?.cart ?? [];
 
-  // Empty state — cart kosong.
   if (groups.length === 0) {
     return (
       <div className='py-20 text-center'>
@@ -40,6 +40,18 @@ function CartContent() {
 
   return (
     <div className='space-y-6'>
+      {/* Tombol kosongkan seluruh cart */}
+      <div className='flex justify-end'>
+        <button
+          onClick={() => clearCart.mutate()}
+          disabled={clearCart.isPending}
+          className='flex items-center gap-2 text-sm font-semibold text-primary hover:underline disabled:opacity-60'
+        >
+          <Trash2 size={16} />
+          {clearCart.isPending ? 'Clearing...' : 'Clear Cart'}
+        </button>
+      </div>
+
       {groups.map((group) => {
         const subtotal = group.items.reduce((sum, it) => sum + it.itemTotal, 0);
         return (

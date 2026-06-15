@@ -1,4 +1,3 @@
-// src/components/shared/footer.tsx
 import Image from 'next/image';
 
 const socials = [
